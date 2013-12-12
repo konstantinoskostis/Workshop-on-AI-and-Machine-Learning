@@ -1,0 +1,21 @@
+1) !!!! YOU NEED TO HAVE JAVA INSTALLED ON YOUR MACHINE (32-bit version for 32-bit machines , 64-bit versions for 64 bit machines)
+Download from: http://www.oracle.com/technetwork/java/javase/downloads/index.html
+-----------------------------------------------------------------------------------------------------------------------------------
+2) Install the Python programming language version 2.7(2.7.6) from http://python.org/download/
+if you are on linux you have python installed. I think that the source code can be interpreted by python 2.6 but i have not tested it
+-------------------------------------------------------------------------------------------------------------------------------------------
+3)Install PyCharm , an Integrated Development Environment for Python by JetBrains. Download from http://www.jetbrains.com/pycharm/download/
+download the community edition which is free!
+-----------------------------------------------------------------------------------------------------
+OR you can download the eclipse ide: http://www.eclipse.org/downloads/
+and use the PyDev(http://pydev.org/download.html) that gives you a python ide!
+-------------------------------------------------------------------------------------------------
+You can also wite code using your favourite text editor and the python interpreter!
+-----------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------
+A hands-on introduction to python can be found at: http://www.youtube.com/watch?v=Gp60Qp3GUBU
+
+----------------------------------------------------------------------------------------------
+IF YOU HAVE ANY PROBLEM INSTALLING THE TOOLS , REMEMBER: Youtube IS YOUR FRIEND! SO IS THE WWW
+----------------------------------------------------------------------------------------------

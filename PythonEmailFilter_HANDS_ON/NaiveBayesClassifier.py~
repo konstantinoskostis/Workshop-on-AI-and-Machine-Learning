@@ -1,0 +1,207 @@
+'''
+Created on Dec 1, 2013
+
+@author: konstantinos kostis , <kekostis@gmail.com>
+'''
+
+class NaiveBayesClassifier(object):
+    
+    def __init__(self):
+        #initialize the HAM probability (PR_HAM) to zero
+        self.PR_HAM = 0
+        
+        #initialize the SPAM probability (PR_SPAM) to zero
+        self.PR_SPAM = 0
+        
+        #initialize a list(PR_EXISTS_HAM) to hold the Pr(x=1|C=HAM)
+        self.PR_EXISTS_HAM = []
+        
+        #initialize a list(PR_NO_EXISTS_HAM) to hold the Pr(x=0|C=HAM)
+        self.PR_NO_EXISTS_HAM = []
+        
+        #initialize a list(PR_EXISTS_SPAM) to hold the Pr(x=1|C=SPAM)
+        self.PR_EXISTS_SPAM = []
+        
+        #initialize a list(PR_NO_EXISTS_SPAM) to hold the Pr(x=0|C=SPAM)
+        self.PR_NO_EXISTS_SPAM = []
+        
+        #initialize a list to hold the features
+        self.features = []
+    
+    
+    """
+    sets all the emails
+    Complete it!
+    """
+
+    def setEmails(self,emails):
+        self.emails = emails
+        #initialize the num_spams to zero
+        self.num_spams = 0
+        #initialize the num_hams to zero
+        self.num_hams = 0
+        #count the SPAM emails and the HAM emails
+        
+            
+    """returns all emails"""
+    def getEmails(self):
+        return self.emails
+    
+    """loads features from a file"""
+    def loadFeatures(self):
+        #open file
+        featuresDescriptor = open("features.txt","r")
+        #load every line to features[]
+        self.features = featuresDescriptor.read().splitlines()
+        #close file 
+        featuresDescriptor.close()
+    
+    def getFeatures(self):
+        return self.features
+    
+    def getEmailVectors(self):
+        return self.emailVectors
+    
+    """
+    train the classifier,  we need to learn P(X|C) where X is a vector and c is a category
+    for every feature calculate Pr(x=1|C=HAM),Pr(x=0|C=HAM),Pr(x=1|C=SPAM), Pr(x=0|C=SPAM)
+    Complete it!
+    """
+    def train(self):
+        #initialize a list(emailVectors) that will hold every transformed email
+        
+        #load the features - call the method
+        
+        #transform every email to a vector and append the vector to email vectors[]
+    
+        #for every feature(use index-based for loop)
+
+            #init a counter that indicates how many times aFeature exists in HAM messages(spams_contain_Feature)
+
+            #init a counter that indicates how many times aFeature does not exist in HAM messages(hams_no_contain_Feature)
+
+            #init a counter that indicates how many times aFeature exists in SPAM messages(spams_contain_Feature)
+
+            #init a counter indicating how many times aFeature does not exist in SPAM messages(spams_no_contain_Feature)
+            
+            #for every emailVector(use index-based for loop)
+
+                #get the current email
+
+                #get current emailVector
+
+                #if the current email is HAM
+
+                    #if the current feature exists in the current email
+
+                        # add one to appropriate counter
+
+                    #else if the current feature does not exist in the current email
+
+                        # add one to appropriate counter
+
+                #else , if the current email is SPAM
+
+                    #if the current feature exists in the current email
+
+                        # add one to appropriate counter
+
+                    #else if the current feature does not exist in the current email add one to appropriate counter
+
+                        # add one to appropriate counter
+
+            #all the probabilities bellow must be float numbers... Be careful when it comes to math
+
+            # calculate and save Pr(x=1|C=HAM) to PR_EXISTS_HAM
+
+            # calculate and save Pr(x=0|C=HAM) to PR_NO_EXISTS_HAM
+
+            # calculate and save Pr(x=1|C=SPAM) to PR_EXISTS_SPAM
+
+            # calculate and save Pr(x=0|C=SPAM) to PR_NO_EXISTS_SPAM
+            
+        #calculate the HAM probability and save it to PR_HAM
+        
+        #calculate the SPAM probability and save it to PR_SPAM
+        
+        #open a file(model.txt)
+        
+        # IMPORTANT!!! To write a float number to a file first convert it to a string using str().
+        # Also , when writing something to a file always use flush(),
+        # otherwise all the characters stay in a buffer in memory till we close the file
+        
+        #write the HAM probability and the SPAM probability separated by a tab
+
+        #write the probabilities of every feature to the file - use index-based for-loop
+
+        #close file
+
+        print "Classifier's model is computed!!!"
+        
+    """
+    classify the given email , by using the model
+    Complete it!
+    """
+    def classify(self,givenEmail):
+        #load the features if self.features is empty
+        if len(self.features) == 0:
+            self.loadFeatures()
+            print "features are loaded"
+        #load the model if the variables at __init__() are empty
+        if len(self.PR_EXISTS_HAM)==0  and len(self.PR_NO_EXISTS_HAM)==0 and len(self.PR_EXISTS_SPAM)==0 and len(self.PR_NO_EXISTS_SPAM)==0 :
+            #open model.txt
+
+            #read first line - contains HAM and SPAM probability
+
+            #split
+
+            #fill probabilities - use the float()
+            
+            #now read the other lines
+
+            #for all lines
+
+                #split the current line
+
+                #fill probabilities
+
+                #add every probability to the corresponding data structure
+
+            #close file
+
+            print "model is loaded"
+
+            
+        #all the above lines are necessary to load the model if our lists are empty
+        
+        #now classify the givenEmail
+        
+        #transform givenEmail to a vector
+
+        #get the email vector and store it to a variable
+
+        # calculate spam score for givenEmail
+        # calculate enumerator PS = P(C=SPAM)*P(X|C=SPAM)
+        #initialize a temporary variable to store the results of multiplications
+
+        #for every index(i) in the vector(use index-based for-loop)
+
+            # if vector[i] is 1 then multiply temporary float with PR_EXISTS_SPAM[i]
+
+            # else multiply temporary float with PR_NO_EXISTS_SPAM[i]
+        #store to PS the result of the enumerator
+
+        #calculate PH = P(C=HAM)*P(X|C=HAM)
+        #re-initialize the temporary variable
+
+        #for every index(i) in the vector(use index-based for-loop)
+
+            # if vector[i] is 1 then multiply temporary float with PR_EXISTS_HAM[i]
+
+            # else multiply temporary float with PR_NO_EXISTS_HAM[i]
+        #store to PH the result PR(HAM)*temporary_var
+
+        #calculate the score of the givenEmail from the formula and store result to score
+
+        #if the score is greater than 0.5 then the given email is spam
+
